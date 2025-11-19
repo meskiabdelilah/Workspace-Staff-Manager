@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Workspace Staff Manager</title>
+    <title>Responsable du personnel de l'espace de travail</title>
 
     <link rel="stylesheet" href="/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -16,16 +16,16 @@
 
         <!-- SIDEBAR -->
         <aside class="sidebar">
-            <h2>Staff Members (Unassigned)</h2>
+            <h2>Membres du personnel (non affectés)</h2>
 
-            <div id="members" class="members">
-                <div class="member">
+            <div id="membersContainer" class="members">
+                <!-- <div class="member">
                     <img src="/assets/logo.png" alt="Photo du membre" />
                     <div class="disc">
                         <p>Abderahman</p>
                         <span>Receptionist</span>
                     </div>
-                    <button class="editBtn">Edit</button>
+                    <button id="edit-worker-btn" class="editBtn">Modifier</button>
                 </div>
                 <div class="member">
                     <img src="/assets/logo.png" alt="Photo du membre" />
@@ -33,10 +33,10 @@
                         <p>Abderahman</p>
                         <span>Receptionist</span>
                     </div>
-                    <button class="editBtn">Edit</button>
-                </div>
+                    <button id="edit-worker-btn" class="editBtn">Modifier</button>
+                </div> -->
             </div>
-            <button id="btn" class="btn">Add New Worker</button>
+            <button onclick="addWorker()" id="add-worker-btn" class="btn">Ajouter un nouvel employé</button>
         </aside>
 
         <!-- Main    -->
@@ -93,7 +93,37 @@
 
             </div>
         </section>
-
+        <section class="display">
+            <div class="worker">
+                <div class="add-worker">
+                    <h1>Ajouter un travailleur</h1>
+                    <form id="addWorkers" class="form">
+                        <label for="workerName">Name:</label>
+                        <input id="workerName" type="text" >
+                        <label for="role">Role:</label>
+                        <select id="role" >
+                            <option value="Salle de conférence">Salle de conférence</option>
+                            <option value="Réception">Réception</option>
+                            <option value="Salle des serveurs">Salle des serveurs</option>
+                            <option value="Salle de sécurité">Salle de sécurité</option>
+                            <option value="Salle de personnel">Salle de personnel</option>
+                            <option value="Salle de d'archives">Salle de d'archives</option>
+                        </select>
+                        <label for="email"> Email:</label>
+                        <input type="email" id="email" >
+                        <label for="phone">Phone:</label>
+                        <input type="tel" id="phone" >
+                        <label for="url">Photo (URL):</label>
+                        <input type="url" id="url">
+                        <div class="btns">
+                            <button class="savebtn">Accepte</button>
+                            <button onclick="cancelWorker()" class="cancelbtn">Annuler</button>
+                        </div>
+                        <button class="add-experience-btn">Ajouter une Experience</button>
+                    </form>
+                </div>
+            </div>
+        </section>
     </main>
 
     <script src="/script.js"></script>

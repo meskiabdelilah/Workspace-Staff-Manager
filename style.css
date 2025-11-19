@@ -180,7 +180,16 @@ body {
 
 /* Add New Worker */
 
+.display {
+    display: none;
+}
+
+.display.active {
+    display: flex;
+}
+
 .worker {
+    background-color: rgba(0, 0, 0, 0.7);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -194,7 +203,7 @@ body {
 }
 
 .worker .add-worker {
-    background-color:var(--color-background-dark) ;
+    background-color: var(--color-background-dark);
     border: 2px solid var(--color-secondary);
     border-radius: 10px;
     padding: 30px;
@@ -205,8 +214,9 @@ body {
 
 .worker .add-worker:hover {
     box-shadow: 0 8px 5px rgba(0, 0, 0, 0.1);
-    transform:translateY(-5px)
+    transform: translateY(-5px)
 }
+
 .add-worker h1 {
     font-size: 1.8rem;
     color: var(--color-primary);
@@ -224,9 +234,15 @@ body {
 .add-worker .form input,
 select {
     border-radius: 8px;
-    border: 2px solid var(--color-secondary);
+    border: 2px solid var(--color-primary);
     padding: 8px;
     margin-bottom: 8px;
+    background-color: var(--color-secondary);
+    color: var(--color-text-light);
+}
+
+.form label {
+    color: var(--color-text-light);
 }
 
 .add-worker .btns {
@@ -238,10 +254,12 @@ select {
     background-color: var(--color-primary);
     padding: 8px 12px;
     border: none;
+    cursor: pointer;
     border-radius: 8px;
     transition: background-color 0.2s;
 }
-.add-worker .Supprimerbtn:hover{
+
+.add-worker .Supprimerbtn:hover {
     background-color: #0056b3;
 }
 
@@ -249,9 +267,26 @@ select {
     background-color: #dc3545;
     padding: 8px;
     border: none;
+    cursor: pointer;
     border-radius: 8px;
     transition: background-color 0.2s;
 }
-.add-worker .cancelbtn:hover{
-    background-color:#c82333;
+
+.add-worker .cancelbtn:hover {
+    background-color: #c82333;
+}
+
+.add-experience-btn {
+    background-color: var(--color-background-dark);
+    color: var(--color-text-light);
+    padding: 8px;
+    font-size: 1.2rem;
+    border: 2px solid var(--color-primary);
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+
+.add-experience-btn:hover {
+    background-color:  var(--color-secondary);
 }
