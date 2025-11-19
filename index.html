@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Workspace Staff Manager</title>
+
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+
+    <main class="layout">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <h2>Staff Members (Unassigned)</h2>
+
+            <div id="members" class="members">
+                <div class="member">
+                    <img src="/assets/logo.png" alt="Photo du membre" />
+                    <div class="disc">
+                        <p>Abderahman</p>
+                        <span>Receptionist</span>
+                    </div>
+                    <button class="editBtn">Edit</button>
+                </div>
+                <div class="member">
+                    <img src="/assets/logo.png" alt="Photo du membre" />
+                    <div class="disc">
+                        <p>Abderahman</p>
+                        <span>Receptionist</span>
+                    </div>
+                    <button class="editBtn">Edit</button>
+                </div>
+            </div>
+            <button id="btn" class="btn">Add New Worker</button>
+        </aside>
+
+        <!-- Main    -->
+        <section class="main">
+            <div class="cards">
+
+                <div id="conference" class="card">
+                    <div class="title">
+                        <h3>Conférence</h3>
+                        <i class="fa-solid fa-user-plus"></i>
+                    </div>
+                    <img src="/assets/copymage.jpg" alt="Photo de la salle de conférence" />
+                </div>
+
+                <div id="reception" class="card">
+                    <div class="title">
+                        <h3>Réception</h3>
+                        <i class="fa-solid fa-user-plus"></i>
+                    </div>
+                    <img src="/assets/copymage.jpg" alt="Photo de la réception" />
+                </div>
+
+                <div id="serveurs" class="card">
+                    <div class="title">
+                        <h3>Salle des serveurs</h3>
+                        <i class="fa-solid fa-user-plus"></i>
+                    </div>
+                    <img src="/assets/copymage.jpg" alt="Photo de la salle des serveurs" />
+                </div>
+
+                <div id="securite" class="card">
+                    <div class="title">
+                        <h3>Sécurité</h3>
+                        <i class="fa-solid fa-user-plus"></i>
+                    </div>
+                    <img src="/assets/copymage.jpg" alt="Photo de la salle de sécurité" />
+                </div>
+
+                <div id="personnel" class="card">
+                    <div class="title">
+                        <h3>Personnel</h3>
+                        <i class="fa-solid fa-user-plus"></i>
+                    </div>
+                    <img src="/assets/copymage.jpg" alt="Photo de la salle du personnel" />
+                </div>
+
+                <div id="archives" class="card">
+                    <div class="title">
+                        <h3>Archives</h3>
+                        <i class="fa-solid fa-user-plus"></i>
+                    </div>
+                    <img src="/assets/copymage.jpg" alt="Photo de la salle d'archives" />
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <script src="/script.js"></script>
+</body>
+
+</html>
