@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Responsable du personnel de l'espace de travail</title>
 
-    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 
@@ -19,27 +19,21 @@
             <h2>Membres du personnel (non affectés)</h2>
 
             <div id="membersContainer" class="members">
-                <!-- <div class="member">
-                    <img src="/assets/logo.png" alt="Photo du membre" />
-                    <div class="disc">
-                        <p>Abderahman</p>
-                        <span>Receptionist</span>
-                    </div>
-                    <button id="edit-worker-btn" class="editBtn">Modifier</button>
-                </div>
-                <div class="member">
-                    <img src="/assets/logo.png" alt="Photo du membre" />
-                    <div class="disc">
-                        <p>Abderahman</p>
-                        <span>Receptionist</span>
-                    </div>
-                    <button id="edit-worker-btn" class="editBtn">Modifier</button>
-                </div> -->
             </div>
-            <button onclick="addWorker()" id="add-worker-btn" class="btn">Ajouter un nouvel employé</button>
+            
+            <!-- MODAL POUR LES DÉTAILS -->
+            <div id="workerModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn" onclick="closeModal()">&times;</span>
+                    <div id="modalDetails">
+                    </div>  
+                </div>
+            </div>
+            
+            <button id="add-worker-btn" class="btn">Ajouter un nouvel employé</button>
         </aside>
 
-        <!-- Main    -->
+        <!-- MAIN CONTENT -->
         <section class="main">
             <div class="cards">
 
@@ -48,7 +42,7 @@
                         <h3>Conférence</h3>
                         <i class="fa-solid fa-user-plus"></i>
                     </div>
-                    <img src="/assets/copymage.jpg" alt="Photo de la salle de conférence" />
+                    <img src="assets/salle de conference.png" alt="Photo de la salle de conférence" />
                 </div>
 
                 <div id="reception" class="card">
@@ -56,7 +50,7 @@
                         <h3>Réception</h3>
                         <i class="fa-solid fa-user-plus"></i>
                     </div>
-                    <img src="/assets/copymage.jpg" alt="Photo de la réception" />
+                    <img src="assets/reception.png" alt="Photo de la réception" />
                 </div>
 
                 <div id="serveurs" class="card">
@@ -64,7 +58,7 @@
                         <h3>Salle des serveurs</h3>
                         <i class="fa-solid fa-user-plus"></i>
                     </div>
-                    <img src="/assets/copymage.jpg" alt="Photo de la salle des serveurs" />
+                    <img src="assets/serveur.jpg" alt="Photo de la salle des serveurs" />
                 </div>
 
                 <div id="securite" class="card">
@@ -72,7 +66,7 @@
                         <h3>Sécurité</h3>
                         <i class="fa-solid fa-user-plus"></i>
                     </div>
-                    <img src="/assets/copymage.jpg" alt="Photo de la salle de sécurité" />
+                    <img src="assets/sécurité.jpg" alt="Photo de la salle de sécurité" />
                 </div>
 
                 <div id="personnel" class="card">
@@ -80,7 +74,7 @@
                         <h3>Personnel</h3>
                         <i class="fa-solid fa-user-plus"></i>
                     </div>
-                    <img src="/assets/copymage.jpg" alt="Photo de la salle du personnel" />
+                    <img src="assets/salle de personnel.jpg" alt="Photo de la salle du personnel" />
                 </div>
 
                 <div id="archives" class="card">
@@ -88,45 +82,62 @@
                         <h3>Archives</h3>
                         <i class="fa-solid fa-user-plus"></i>
                     </div>
-                    <img src="/assets/copymage.jpg" alt="Photo de la salle d'archives" />
+                    <img src="assets/salle d'archive.jpg" alt="Photo de la salle d'archives" />
                 </div>
 
             </div>
         </section>
+        
+        <!-- FORMULAIRE AJOUT EMPLOYÉ -->
         <section class="display">
             <div class="worker">
                 <div class="add-worker">
                     <h1>Ajouter un travailleur</h1>
                     <form id="addWorkers" class="form">
-                        <label for="workerName">Name:</label>
-                        <input id="workerName" type="text" >
-                        <label for="role">Role:</label>
+                        <label for="workerName">Nom:</label>
+                        <input id="workerName" type="text">
+                        <span class="error" id="nameError"></span>
+                        
+                        <label for="role">Rôle:</label>
                         <select id="role" >
                             <option value="Salle de conférence">Salle de conférence</option>
                             <option value="Réception">Réception</option>
                             <option value="Salle des serveurs">Salle des serveurs</option>
                             <option value="Salle de sécurité">Salle de sécurité</option>
                             <option value="Salle de personnel">Salle de personnel</option>
-                            <option value="Salle de d'archives">Salle de d'archives</option>
+                            <option value="Salle d'archives">Salle d'archives</option>
                         </select>
-                        <label for="email"> Email:</label>
+                        
+                        <label for="email">Email:</label>
                         <input type="email" id="email" >
-                        <label for="phone">Phone:</label>
-                        <input type="tel" id="phone" >
+                        <span class="error" id="emailError"></span>
+                        
+                        <label for="phone">Téléphone:</label>
+                        <input type="tel" id="phone">
+                        <span class="error" id="phoneError"></span>
+                        
                         <label for="url">Photo (URL):</label>
                         <input type="url" id="url">
-                        <div class="btns">
-                            <button class="savebtn">Accepte</button>
-                            <button onclick="cancelWorker()" class="cancelbtn">Annuler</button>
+                        <span class="error" id="urlError"></span>
+                        
+                        <button type="button" onclick="addExperienceBtn()" class="add-experience-btn">
+                            Ajouter une Expérience
+                        </button>
+                        
+                        <div class="experience">
                         </div>
-                        <button class="add-experience-btn">Ajouter une Experience</button>
+                        
+                        <div class="btns">
+                            <button type="submit" class="savebtn">Accepter</button>
+                            <button type="button" onclick="cancelWorker()" class="cancelbtn">Annuler</button>
+                        </div>
                     </form>
                 </div>
             </div>
         </section>
     </main>
 
-    <script src="/script.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
