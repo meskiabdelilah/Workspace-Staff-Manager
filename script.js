@@ -111,12 +111,12 @@ function validateForm() {
         emailError.textContent = "";
     }
 
-    // if (!phoneRegex.test(tel.value)) {
-    //     phoneError.textContent = "Numéro invalide";
-    //     isValid = false;
-    // } else {
-    //     phoneError.textContent = "";
-    // }
+    if (!phoneRegex.test(tel.value)) {
+        phoneError.textContent = "Numéro invalide";
+        isValid = false;
+    } else {
+        phoneError.textContent = "";
+    }
 
     if (!urlRegex.test(url.value)) {
         urlError.textContent = "URL invalide";
