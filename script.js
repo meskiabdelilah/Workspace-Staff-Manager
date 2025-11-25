@@ -14,6 +14,21 @@ const nameError = document.getElementById("nameError");
 const emailError = document.getElementById("emailError");
 const phoneError = document.getElementById("phoneError");
 const urlError = document.getElementById("urlError");
+const rooms = document.querySelectorAll(".card")
+const roomsPopUp = document.querySelector(".roomsPopUp")
+const popUpList = document.getElementById("popUpList")
+const AnnulerPopUp = document.getElementById("AnnulerPopUp")
+const insideRoom = document.querySelector("insideRoom")
+
+const roomRoles = [
+    ["Manager", "Nettoyage"],          // Salle de conference
+    ["Réceptionniste(e)", "Manager", "Nettoyage"],    // Reception
+    ["Technicien IT", "Manager", "Nettoyage"],    // Salle des serveurs
+    ["sécurité", "Manager", "Nettoyage"],        // Salle de sécurité
+    ["Manager", "Nettoyage", "Autres rôle", "Réceptionniste(e)", "sécurité", "Technicien IT"],   // Salle du personnel
+    ["Technicien IT", "Manager"],    // Salle d'archives
+
+];
 
 let workers = [];
 let experienceCount = 0;
@@ -66,16 +81,13 @@ function getAllExperiences() {
     const experienceDivs = document.querySelectorAll('.add-experience');
 
     experienceDivs.forEach((div) => {
-        const postInput = div.querySelector('input[type="text"]:nth-of-type(1)');
-        const enterpriseInput = div.querySelector('input[type="text"]:nth-of-type(2)');
-        const startDateInput = div.querySelector('input[type="date"]:nth-of-type(1)');
-        const endDateInput = div.querySelector('input[type="date"]:nth-of-type(2)');
 
+        const inputs = div.querySelectorAll("input")
         experiences.push({
-            post: postInput ? postInput.value : '',
-            enterprise: enterpriseInput ? enterpriseInput.value : '',
-            startDate: startDateInput ? startDateInput.value : '',
-            endDate: endDateInput ? endDateInput.value : ''
+            post: inputs[0].value,
+            enterprise: inputs[1].value,
+            startDate: inputs[2].value,
+            endDate: inputs[3].value
         });
     });
 
@@ -99,12 +111,12 @@ function validateForm() {
         emailError.textContent = "";
     }
 
-    if (!phoneRegex.test(tel.value)) {
-        phoneError.textContent = "Numéro invalide";
-        isValid = false;
-    } else {
-        phoneError.textContent = "";
-    }
+    // if (!phoneRegex.test(tel.value)) {
+    //     phoneError.textContent = "Numéro invalide";
+    //     isValid = false;
+    // } else {
+    //     phoneError.textContent = "";
+    // }
 
     if (!urlRegex.test(url.value)) {
         urlError.textContent = "URL invalide";
@@ -133,13 +145,13 @@ addWorkers.addEventListener("submit", function (e) {
         tel: tel.value,
         email: email.value,
         url: url.value,
-        experiences: experiences
+        experiences: experiences,
+        zone: null
     };
     workers.push(worker);
 
     renderWorkers();
     addForm.classList.remove("active");
-    console.log("Travailleurs:", workers);
 });
 
 function renderWorkers() {
@@ -213,7 +225,7 @@ function closeModal() {
 }
 
 modal.addEventListener("click", function (event) {
-    if(event.target === modal) {
+    if (event.target === modal) {
         closeModal()
     }
 })
@@ -231,7 +243,61 @@ function validateField(field, regex, errorElement, message) {
     }
 }
 
-window.addExperienceBtn = addExperienceBtn;
-window.removeExperience = removeExperience;
-window.closeModal = closeModal;
-window.cancelWorker = cancelWorker;
+AnnulerPopUp.addEventListener("click", function () {
+    roomsPopUp.classList.add("hidePopUp");
+});
+
+for (let i = 0; i < rooms.length; i++) {
+    const room = rooms[i];
+    const roomIcon = room.querySelector(".fa-solid");
+
+    // Container fin ghadi ytla3 worker daba
+    const containerInRoom = room;
+
+    roomIcon.addEventListener("click", function () {
+        let roomRole = roomRoles[i];
+
+        // Reset Popup
+        roomsPopUp.classList.remove("hidePopUp");
+        popUpList.innerHTML = ``;
+
+        // Loop 3la workers
+        for (let j = 0; j < workers.length; j++) {
+            let worker = workers[j];
+
+            if (worker.zone == null && roomRole.includes(worker.role)) {
+
+                // Element jdiiid
+                let empDiv = document.createElement("div");
+                empDiv.className = "member";
+
+                empDiv.innerHTML = `
+                    <img src="${worker.url || 'assets/logo.png'}" alt="Photo" />
+                    <div class="disc">
+                        <p>${worker.name}</p>
+                        <small>${worker.role}</small>
+                    </div>
+                `;
+
+                // Event click dyal worker
+                empDiv.addEventListener("click", function () {
+
+                    worker.zone = i;
+
+                    let insideRoomCard = document.createElement("div");
+                    insideRoomCard.className = "member-small";
+                    insideRoomCard.innerHTML = `
+                        <p>${worker.name}</p>
+                        <small>${worker.role}</small>
+                    `;
+
+                    containerInRoom.appendChild(insideRoomCard);
+
+                    roomsPopUp.classList.add("hidePopUp");
+                });
+
+                popUpList.appendChild(empDiv);
+            }
+        }
+    });
+}

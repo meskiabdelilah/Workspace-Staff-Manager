@@ -42,6 +42,7 @@
                         <h3>Conférence</h3>
                         <i class="fa-solid fa-user-plus"></i>
                     </div>
+                    <div class="insideRoom"></div>
                     <img src="assets/salle de conference.png" alt="Photo de la salle de conférence" />
                 </div>
 
@@ -50,6 +51,7 @@
                         <h3>Réception</h3>
                         <i class="fa-solid fa-user-plus"></i>
                     </div>
+                    <div class="insideRoom"></div>
                     <img src="assets/reception.png" alt="Photo de la réception" />
                 </div>
 
@@ -58,6 +60,8 @@
                         <h3>Salle des serveurs</h3>
                         <i class="fa-solid fa-user-plus"></i>
                     </div>
+                    <div class="insideRoom"></div>
+
                     <img src="assets/serveur.jpg" alt="Photo de la salle des serveurs" />
                 </div>
 
@@ -66,6 +70,8 @@
                         <h3>Sécurité</h3>
                         <i class="fa-solid fa-user-plus"></i>
                     </div>
+                    <div class="insideRoom"></div>
+
                     <img src="assets/sécurité.jpg" alt="Photo de la salle de sécurité" />
                 </div>
 
@@ -74,6 +80,8 @@
                         <h3>Personnel</h3>
                         <i class="fa-solid fa-user-plus"></i>
                     </div>
+                    <div class="insideRoom"></div>
+
                     <img src="assets/salle de personnel.jpg" alt="Photo de la salle du personnel" />
                 </div>
 
@@ -82,6 +90,8 @@
                         <h3>Archives</h3>
                         <i class="fa-solid fa-user-plus"></i>
                     </div>
+                    <div class="insideRoom"></div>
+
                     <img src="assets/salle d'archive.jpg" alt="Photo de la salle d'archives" />
                 </div>
 
@@ -100,12 +110,12 @@
                         
                         <label for="role">Rôle:</label>
                         <select id="role" >
-                            <option value="Salle de conférence">Salle de conférence</option>
-                            <option value="Réception">Réception</option>
-                            <option value="Salle des serveurs">Salle des serveurs</option>
-                            <option value="Salle de sécurité">Salle de sécurité</option>
-                            <option value="Salle de personnel">Salle de personnel</option>
-                            <option value="Salle d'archives">Salle d'archives</option>
+                            <option value="Manager">Manager</option>
+                            <option value="Réceptionniste(e)">Réceptionniste(e)</option>
+                            <option value="Technicien IT">Technicien IT</option>
+                            <option value="sécurité">sécurité</option>
+                            <option value="Nettoyage">Nettoyage</option>
+                            <option value="Autres rôle">Autres rôle</option>
                         </select>
                         
                         <label for="email">Email:</label>
@@ -121,7 +131,7 @@
                         <span class="error" id="urlError"></span>
                         
                         <button type="button" onclick="addExperienceBtn()" class="add-experience-btn">
-                            Ajouter une Expérience
+                            Ajouter une  Expérience
                         </button>
                         
                         <div class="experience">
@@ -135,6 +145,15 @@
                 </div>
             </div>
         </section>
+
+        <div class="roomsPopUp  hidePopUp" >
+            <div class="PopUp">
+                <h2>Choisi un omployé</h2>
+                <div id="popUpList"></div>
+                <button id="AnnulerPopUp"> Annuler</button>
+            </div>
+        </div>
+
     </main>
 
     <script src="script.js"></script>

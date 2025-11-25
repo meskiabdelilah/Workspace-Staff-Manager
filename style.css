@@ -60,6 +60,7 @@ body {
     align-items: center;
     background-color: #34495e;
     padding: 12px;
+    cursor: pointer;
     margin-bottom: 10px;
     border-radius: 8px;
     transition: all 0.3s ease;
@@ -230,7 +231,7 @@ body {
     background-color: rgba(0, 0, 0, 0.8);
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
     position: fixed;
     overflow-y: auto;
     top: 0;
@@ -257,6 +258,7 @@ body {
         opacity: 0;
         transform: scale(0.9) translateY(-20px);
     }
+
     to {
         opacity: 1;
         transform: scale(1) translateY(0);
@@ -415,7 +417,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.7);
+    background-color: rgba(0, 0, 0, 0.7);
     justify-content: center;
     align-items: center;
     z-index: 2000;
@@ -524,13 +526,74 @@ body {
     margin-top: 5px;
 }
 
+.roomsPopUp {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hidePopUp {
+    display: none !important;
+}
+
+.PopUp {
+    background: var(--color-secondary);
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+}
+
+#AnnulerPopUp {
+    padding: 0.5rem 1rem;
+    background-color: #dc3545;
+    margin-top: 1rem;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+
+#AnnulerPopUp:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+}
+
+.member-small {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--color-secondary); /* slightly different from main member */
+    padding: 8px 10px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid var(--color-border);
+    font-size: 0.85rem;
+}
+
+.member-small:hover {
+    background-color: var(--color-background-dark);
+    transform: translateX(3px);
+}
+
+
 /* ========== RESPONSIVE ========== */
 
 @media (min-width: 1280px) {
     .cards {
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     }
-    
+
     .worker .add-worker {
         width: 45%;
     }
@@ -540,12 +603,12 @@ body {
     .sidebar {
         width: 280px;
     }
-    
+
     .cards {
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 20px;
     }
-    
+
     .worker .add-worker {
         width: 65%;
     }
@@ -555,36 +618,36 @@ body {
     .layout {
         flex-direction: column;
     }
-    
+
     .sidebar {
         width: 100%;
         padding: 20px;
         max-height: 40vh;
     }
-    
+
     .members {
         max-height: 25vh;
     }
-    
+
     .sidebar h2 {
         font-size: 1.3rem;
         margin-bottom: 20px;
     }
-    
+
     .main {
         padding: 25px;
     }
-    
+
     .cards {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 20px;
     }
-    
+
     .worker .add-worker {
         width: 75%;
         padding: 25px;
     }
-    
+
     .add-worker h1 {
         font-size: 1.6rem;
     }
@@ -594,108 +657,108 @@ body {
     .layout {
         flex-direction: column;
     }
-    
+
     .sidebar {
         width: 100%;
         padding: 15px;
         max-height: 50vh;
     }
-    
+
     .members {
         max-height: 35vh;
     }
-    
+
     .sidebar h2 {
         font-size: 1.2rem;
         margin-bottom: 15px;
         padding-bottom: 8px;
     }
-    
+
     .member {
         padding: 10px;
         margin-bottom: 8px;
     }
-    
+
     .member img {
         width: 40px;
         height: 40px;
     }
-    
+
     .main {
         padding: 20px;
     }
-    
+
     .cards {
         grid-template-columns: 1fr;
         gap: 15px;
     }
-    
+
     .card .title {
         padding: 15px;
     }
-    
+
     .card .title h3 {
         font-size: 1.1rem;
     }
-    
+
     .card img {
         height: 180px;
     }
-    
+
     .worker {
         padding: 10px;
     }
-    
+
     .worker .add-worker {
         width: 95%;
         padding: 20px;
         margin: 10px;
     }
-    
+
     .add-worker h1 {
         font-size: 1.4rem;
         margin-bottom: 20px;
     }
-    
+
     .add-worker .btns {
         flex-direction: column;
         gap: 10px;
     }
-    
+
     .add-worker .savebtn,
     .add-worker .cancelbtn {
         width: 100%;
         padding: 12px;
     }
-    
+
     .add-experience-btn {
         width: 100%;
         font-size: 0.95rem;
     }
-    
+
     .add-experience {
         padding: 15px;
     }
-    
+
     .modal-content {
         width: 95%;
         padding: 20px;
     }
-    
+
     .worker-header img {
         width: 80px;
         height: 80px;
     }
-    
+
     .worker-header h3 {
         font-size: 1.3rem;
     }
-    
+
     .exp-item {
         padding: 12px;
         font-size: 0.9rem;
     }
-    
+
     .btn {
         padding: 12px;
         font-size: 0.95rem;
@@ -708,45 +771,45 @@ body {
         text-align: center;
         gap: 8px;
     }
-    
+
     .member img {
         margin-right: 0;
         margin-bottom: 5px;
     }
-    
+
     .member .discbtn {
         margin-left: 0;
         width: 100%;
         display: flex;
         justify-content: center;
     }
-    
+
     .detailsBtn {
         width: 100%;
         max-width: 200px;
     }
-    
+
     .cards {
         gap: 12px;
     }
-    
+
     .card img {
         height: 160px;
     }
-    
+
     .worker .add-worker {
         padding: 15px;
     }
-    
+
     .add-worker h1 {
         font-size: 1.3rem;
     }
-    
+
     .add-worker .form input,
     .add-worker .form select {
         padding: 10px;
     }
-    
+
     .modal-content {
         padding: 15px;
     }
